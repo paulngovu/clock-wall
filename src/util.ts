@@ -288,10 +288,10 @@ export const generateArrays = (
 
 export const generateLeftHalf = (hour: number): number[][][] => {
   // First digit
-  const tens = NUMBERS[Math.floor((hour % 12) / 10)]
+  const tens = hour >= 10 ? ONE : ZERO;
 
   // Second digit
-  const ones = NUMBERS[hour % 12];
+  const ones = NUMBERS[hour > 12 ? ((hour - 12) % 10) : (hour % 10)];
 
   const top = [[0, 90]].concat(Array(6).fill([0, 180]));
   const bottom = [[270, 0]].concat(Array(6).fill([180, 0]));
